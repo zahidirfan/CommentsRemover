@@ -1,6 +1,13 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+from api.models import Snippet
+from api.serializers import SnippetSerializer
+from rest_framework import generics
 
-from django.shortcuts import render
 
-# Create your views here.
+class SnippetList(generics.ListCreateAPIView):
+    queryset = Snippet.objects.all()
+    serializer_class = SnippetSerializer
+
+
+class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Snippet.objects.all()
+    serializer_class = SnippetSerializer
