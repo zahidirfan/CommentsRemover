@@ -19,25 +19,32 @@ class SnippetForm extends Component {
     }
 
     handleChange(e){
-      var index = e.target.value;
-      console.log(index);
-      fetch('snippets/highlight/'+ index)
-        .then(res => res.json()
-      )
-        .then (snippet => this.setState({snippet})
-      )
+      var index = document.getElementById("snippet-index").value;
+      var comments = document.getElementById('comments').checked;
+
+      if (comments === false) {
+        fetch('snippets/highlight/'+ index)
+          .then(res => res.json()
+        )
+          .then (snippet => this.setState({snippet})
+        )
+      } else {
+        fetch('snippets/nocomments/'+ index)
+          .then(res => res.json()
+        )
+          .then (snippet => this.setState({snippet})
+        )
+      }
     }
 
     render() {
       return (
-        <div className="col-sm-8">
-            select snippet : <select onChange= {this.handleChange.bind(this)}> options={this.state.snippets.map(snippet =>  <option value = {snippet.id}> {snippet.id}</option>)}</select>
-            <div className='col-sm-4' dangerouslySetInnerHTML={{
+        <div className="col-sm-12">
+            select snippet : <select id="snippet-index" onChange= {this.handleChange.bind(this)}> options={this.state.snippets.map(snippet =>  <option value = {snippet.id}> {snippet.id}</option>)}</select>
+            comments : <input id="comments" type="checkbox" onChange= {this.handleChange.bind(this)}/>
+            <div align="left" className='col-sm-6' dangerouslySetInnerHTML={{
                    __html: this.state.snippet.code
                  }}/>
-             <div className='col-sm-4'dangerouslySetInnerHTML={{
-                    __html: this.state.snippet.code
-                  }}/>
        </div>
       );
     }
