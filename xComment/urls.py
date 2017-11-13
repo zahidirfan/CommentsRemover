@@ -20,6 +20,10 @@ from api import views
 urlpatterns = [
     url(r'^snippets/$', views.SnippetList.as_view()),
     url(r'^snippets/(?P<pk>[0-9]+)/$', views.SnippetDetail.as_view()),
+    url(r'^snippets/highlight/(?P<pk>[0-9]+)/$',
+        views.SnippetHighlight.as_view()),
+    url(r'^snippets/comments/(?P<pk>[0-9]+)/$',
+        views.SnippetComments.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
