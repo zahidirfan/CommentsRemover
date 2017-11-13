@@ -18,7 +18,7 @@ class SnippetForm extends Component {
         .then(snippets => this.setState({ snippets }));
     }
 
-    handleChange(e){
+    handleChange(){
       var index = document.getElementById("snippet-index").value;
       var comments = document.getElementById('comments').checked;
 
@@ -39,10 +39,10 @@ class SnippetForm extends Component {
 
     render() {
       return (
-        <div className="col-sm-12">
-            select snippet : <select id="snippet-index" onChange= {this.handleChange.bind(this)}> options={this.state.snippets.map(snippet =>  <option value = {snippet.id}> {snippet.id}</option>)}</select>
+        <div>
+            select snippet : <select id="snippet-index" onChange= {this.handleChange.bind(this)}> options={this.state.snippets.map(snippet =>  <option value = {snippet.id}> {snippet.title}</option>)}</select>
             comments : <input id="comments" type="checkbox" onChange= {this.handleChange.bind(this)}/>
-            <div align="left" className='col-sm-6' dangerouslySetInnerHTML={{
+            <div align="left"  dangerouslySetInnerHTML={{
                    __html: this.state.snippet.code
                  }}/>
        </div>
