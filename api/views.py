@@ -48,13 +48,16 @@ class SnippetComments(generics.RetrieveUpdateDestroyAPIView):
             pygments.token.Comment.Multiline,
             pygments.token.Comment.Preproc,
             pygments.token.Comment.Single,
-            pygments.token.Comment.Special
+            pygments.token.Comment.Special,
+            pygments.token.Literal.String.Doc
         ]
         object = super(SnippetComments, self).get_object()
         lexer = get_lexer_by_name(object.language, stripall=True)
         formatter = HtmlFormatter(linenos=True, cssclass="source")
         comments = ""
         for token_type, token_text in lexer.get_tokens(object.code):
+            print token_type
+            print token_text + "\n"
             # Check for keywords and convert them to lower case.
             if token_type in pygment_comments:
                 comments = comments + token_text + '\n'
