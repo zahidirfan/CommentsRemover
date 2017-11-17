@@ -29,7 +29,7 @@ class SnippetForm extends Component {
           .then (snippet => this.setState({snippet})
         )
       } else {
-        fetch('snippets/nocomments/'+ index)
+        fetch('snippets/comments/'+ index)
           .then(res => res.json()
         )
           .then (snippet => this.setState({snippet})

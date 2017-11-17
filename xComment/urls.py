@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^snippets/(?P<pk>[0-9]+)/$', views.SnippetDetail.as_view()),
     url(r'^snippets/highlight/(?P<pk>[0-9]+)/$',
         views.SnippetHighlight.as_view()),
-    url(r'^snippets/nocomments/(?P<pk>[0-9]+)/$',
+    url(r'^snippets/comments/(?P<pk>[0-9]+)/$',
         views.SnippetComments.as_view()),
 ]
 
