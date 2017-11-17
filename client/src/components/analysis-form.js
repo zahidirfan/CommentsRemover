@@ -6,26 +6,14 @@ class AnalysisForm extends Component {
 
     constructor (props){
       super(props);
-      this.state = {
-        snippets: [],
-        snippet : []
-      };
-      this.handleChange.bind(this);
     }
     componentDidMount() {
-      fetch('snippets/')
-        .then(res => res.json())
-        .then(snippets => this.setState({ snippets }));
+
     }
 
     handleChange(){
       var code = document.getElementById("code").value;
-
-      fetch('snippets/highlight/')
-        .then(res => res.json()
-      )
-        .then (snippet => this.setState({snippet})
-      )
+      #TODO : Need to add code to analyse the code and return language
     }
 
     render() {
