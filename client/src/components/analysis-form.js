@@ -13,7 +13,7 @@ class AnalysisForm extends Component {
 
     handleChange(){
       var code = document.getElementById("code").value;
-      #TODO : Need to add code to analyse the code and return language
+      // TODO : Need to add code to analyse the code and return language
     }
 
     render() {
