@@ -40,10 +40,7 @@ class SnippetForm extends Component {
     render() {
       return (
         <div>
-            select snippet : <select
-            id="snippet-index" onChange= {this.handleChange.bind(this)}> 
-            options={this.state.snippets.map(
-              snippet =>  <option value = {snippet.id}> {snippet.title}</option>)}</select>
+            select snippet : <select id="snippet-index" onChange= {this.handleChange.bind(this)}> options={this.state.snippets.map(snippet =>  <option value = {snippet.id}> {snippet.title}</option>)}</select>
             comments : <input id="comments" type="checkbox" onChange= {this.handleChange.bind(this)}/>
             <div align="left"  dangerouslySetInnerHTML={{
                    __html: this.state.snippet.code
