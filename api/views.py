@@ -1,8 +1,11 @@
 from api.models import Snippet
 from api.serializers import SnippetSerializer
 from rest_framework import generics
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from pygments import highlight
 import pygments
+from pygments.lexers import guess_lexer
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
 from bs4 import BeautifulSoup
@@ -11,6 +14,15 @@ from bs4 import BeautifulSoup
 class SnippetList(generics.ListCreateAPIView):
     queryset = Snippet.objects.all()
     serializer_class = SnippetSerializer
+
+
+class SnippetAnalysis(APIView):
+
+    def post(self, request):
+        # print request.data['code']
+        code = request.data['code']
+        language = guess_lexer(code).name
+        return Response(language)
 
 
 class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):

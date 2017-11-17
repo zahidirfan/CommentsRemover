@@ -24,6 +24,8 @@ urlpatterns = [
         views.SnippetHighlight.as_view()),
     url(r'^snippets/comments/(?P<pk>[0-9]+)/$',
         views.SnippetComments.as_view()),
+    url(r'^snippets/analyse_code/$',
+        views.SnippetAnalysis.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
